@@ -1,5 +1,7 @@
+import { GetStaticPropsContext } from 'next';
 import React from 'react';
 
+import Screen from '../../components/containers/Screen';
 import {
   CategoryArticleType,
   CategoryListItemType,
@@ -7,9 +9,9 @@ import {
   getCategoriesList,
   getCategoryArticles,
   getCategoryDetails,
-} from '../../../utils/datasource';
+} from '../../utils/datasource';
 
-interface ContextParams {
+interface ContextParams extends GetStaticPropsContext {
   params: CategoryListItemType;
 }
 
@@ -20,7 +22,7 @@ interface Props {
 
 export default function CategoryPage({ category, articles }: Props) {
   return (
-    <div>
+    <Screen isCompact>
       <h1>{category.name}</h1>
       <p>{category.description}</p>
 
@@ -35,13 +37,13 @@ export default function CategoryPage({ category, articles }: Props) {
           </li>
         ))}
       </ul>
-    </div>
+    </Screen>
   );
 }
 
-export async function getStaticProps({ params }: ContextParams) {
-  const articles = await getCategoryArticles(params.lang, params.category);
-  const category = getCategoryDetails(params.lang, params.category);
+export async function getStaticProps({ params, locale }: ContextParams) {
+  const articles = await getCategoryArticles(locale, params.category);
+  const category = getCategoryDetails(locale, params.category);
 
   return {
     props: { category, articles },

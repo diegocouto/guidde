@@ -1,10 +1,17 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const colors = require('tailwindcss/colors');
+
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
   purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
+    colors: {
+      ...colors,
+      gray: colors.coolGray,
+    },
+    container: {
+      center: true,
+      padding: '1rem',
+    },
     extend: {
       colors: {
         primary: {
@@ -17,6 +24,11 @@ module.exports = {
           700: '#551B88',
           800: '#401466',
           900: '#2B0E44',
+        },
+      },
+      container: {
+        screens: {
+          '2xl': '1280px',
         },
       },
     },

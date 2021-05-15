@@ -1,8 +1,10 @@
+import { GetStaticPropsContext } from 'next';
 import React from 'react';
 
-import { ArticlesListItemType, ArticleType, getArticle, getArticlesList } from '../../../utils/datasource';
+import Screen from '../../components/containers/Screen';
+import { ArticlesListItemType, ArticleType, getArticle, getArticlesList } from '../../utils/datasource';
 
-interface ContextParams {
+interface ContextParams extends GetStaticPropsContext {
   params: ArticlesListItemType;
 }
 
@@ -13,15 +15,15 @@ interface Props {
 
 export default function ArticlePage({ article }: Props) {
   return (
-    <div>
+    <Screen isCompact>
       <h1>{article.meta.title}</h1>
       <article dangerouslySetInnerHTML={{ __html: article.content }} />
-    </div>
+    </Screen>
   );
 }
 
-export async function getStaticProps({ params }: ContextParams) {
-  const article = await getArticle(params.lang, params.category, params.slug);
+export async function getStaticProps({ params, locale }: ContextParams) {
+  const article = await getArticle(locale, params.category, params.slug);
 
   return {
     props: { category: params.category, article },
