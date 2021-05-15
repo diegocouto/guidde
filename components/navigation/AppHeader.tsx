@@ -18,7 +18,7 @@ export default function AppHeader({ isCompact }: Props) {
         <NavigationBar>
           <Link href="/" passHref>
             <LogoLink>
-              <Logo src="/logo.svg" />
+              <Logo />
             </LogoLink>
           </Link>
 
@@ -53,7 +53,12 @@ const NavigationBar = styled.div.attrs({
 const SearchBar = styled.div.attrs({ className: 'space-y-2' })``;
 
 const LogoLink = styled.a``;
-const Logo = styled.img.attrs({ className: 'h-8' })``;
+
+const Logo = styled.img.attrs({
+  alt: Brand.name,
+  src: '/logo.svg',
+  className: 'h-8',
+})``;
 
 const NavigationActions = styled.div.attrs({
   className: 'flex items-center text-sm space-x-4',

@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Brand } from '../../utils/constants/app';
+import AppFooter from '../navigation/AppFooter';
 import AppHeader from '../navigation/AppHeader';
 
 interface Props {
@@ -24,12 +25,19 @@ export default function Screen({ children, ...props }: React.PropsWithChildren<P
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AppHeader isCompact={props.isCompact} />
-      <ScreenContent>{children}</ScreenContent>
+      <AppWrapper>
+        <AppHeader isCompact={props.isCompact} />
+        <ScreenContent>{children}</ScreenContent>
+        <AppFooter />
+      </AppWrapper>
     </>
   );
 }
 
+const AppWrapper = styled.div.attrs({
+  className: 'flex flex-col h-full',
+})``;
+
 const ScreenContent = styled.div.attrs({
-  className: 'container',
+  className: 'container flex-1',
 })``;
