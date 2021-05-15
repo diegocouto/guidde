@@ -1,4 +1,5 @@
 {
+  "pageTitle": "{{ brand }} Help Center",
   "header": {
     "backTo": "Back to {{ brand }}",
     "contactUs": "Contact us",

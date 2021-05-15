@@ -22,7 +22,7 @@ interface Props {
 
 export default function CategoryPage({ category, articles }: Props) {
   return (
-    <Screen isCompact>
+    <Screen title={category.name} isCompact>
       <h1>{category.name}</h1>
       <p>{category.description}</p>
 

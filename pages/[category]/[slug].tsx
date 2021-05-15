@@ -15,7 +15,7 @@ interface Props {
 
 export default function ArticlePage({ article }: Props) {
   return (
-    <Screen isCompact>
+    <Screen title={article.meta.title} isCompact>
       <h1>{article.meta.title}</h1>
       <article dangerouslySetInnerHTML={{ __html: article.content }} />
     </Screen>
