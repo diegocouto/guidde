@@ -1,14 +1,11 @@
-import Head from 'next/head';
+import React from 'react';
+
+import Screen from '../components/containers/Screen';
 
 export default function Home() {
   return (
-    <div>
-      <Head>
-        <title>Guidde</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <Screen>
       <h1>Hello, there! 👋</h1>
-    </div>
+    </Screen>
   );
 }

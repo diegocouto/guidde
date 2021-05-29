@@ -5,49 +5,93 @@ import path from 'path';
 import { markdownToHtml } from './markdown';
 
 export type ArticleType = {
-  slug: string;
   content: string;
   meta: {
     title: string;
     description: string;
     updatedAt: string;
   };
+  slug: string;
+  url: string;
 };
 
 export type ArticlesListItemType = {
-  lang: string;
+  locale: string;
   category: string;
   slug: string;
 };
 
+export type CategoryArticleType = Omit<ArticleType, 'content'>;
+
+export type CategoryListItemType = {
+  locale: string;
+  category: string;
+};
+
 const articlesDirectory = path.join(process.cwd(), 'articles');
 
-export async function getArticle(lang: string, category: string, slug: string) {
-  const fullPath = path.join(articlesDirectory, lang, category, `${slug}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+export async function getArticle(locale: string, category: string, slug: string, parseContent = true) {
+  const articlePath = getFullArticlePath(locale, category, slug);
+  const fileContents = fs.readFileSync(articlePath, 'utf8');
 
   const article = matter(fileContents);
-  const content = await markdownToHtml(article.content);
+  const content = parseContent ? await markdownToHtml(article.content) : null;
 
-  return { slug, meta: article.data, content };
+  return {
+    slug,
+    url: path.join('/', category, slug),
+    meta: article.data,
+    ...(content ? { content } : {}),
+  };
 }
 
 export function getArticlesList() {
-  const articlesList = [];
+  const categories = getCategoriesList();
+  const articles = [];
 
-  fs.readdirSync(articlesDirectory).forEach((lang) => {
-    fs.readdirSync(path.join(articlesDirectory, lang)).forEach((category) => {
-      fs.readdirSync(path.join(articlesDirectory, lang, category)).forEach((article) => {
-        articlesList.push({
-          lang,
-          category,
-          slug: parseArticleFilename(article),
-        });
+  categories.forEach(({ locale, category }) => {
+    fs.readdirSync(path.join(articlesDirectory, locale, category)).forEach((article) => {
+      articles.push({
+        locale,
+        category,
+        slug: parseArticleFilename(article),
       });
     });
   });
 
-  return articlesList;
+  return articles;
+}
+
+export async function getCategoryArticles(locale: string, category: string) {
+  const categoryPath = path.join(articlesDirectory, locale, category);
+  const articleFilenames = fs.readdirSync(categoryPath);
+
+  const articles = await Promise.all(
+    articleFilenames.map(async (filename) => {
+      const slug = parseArticleFilename(filename);
+      const article = await getArticle(locale, category, slug, false);
+
+      return article;
+    })
+  );
+
+  return articles.sort((a, b) => a.meta.order - b.meta.order);
+}
+
+export function getCategoriesList() {
+  const categories = [];
+
+  fs.readdirSync(articlesDirectory).forEach((locale) => {
+    fs.readdirSync(path.join(articlesDirectory, locale)).forEach((category) => {
+      categories.push({ locale, category });
+    });
+  });
+
+  return categories;
+}
+
+function getFullArticlePath(locale: string, category: string, slug: string) {
+  return path.join(articlesDirectory, locale, category, `${slug}.md`);
 }
 
 function parseArticleFilename(filename: string) {
