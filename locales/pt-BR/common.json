@@ -1,0 +1,9 @@
+{
+  "pageTitle": "{{ brand }} Central de Ajuda",
+  "homePageTitle": "Central de Ajuda",
+  "header": {
+    "backTo": "Voltar para {{ brand }}",
+    "contactUs": "Entre em contato",
+    "title": "Como podemos ajudar?"
+  }
+}
