@@ -43,6 +43,6 @@ export async function getStaticProps({ params, locale }: ContextParams) {
 export async function getStaticPaths() {
   return {
     fallback: false,
-    paths: getArticlesList().map((article) => ({ params: article })),
+    paths: getArticlesList().map((article) => ({ params: article, locale: article.locale })),
   };
 }

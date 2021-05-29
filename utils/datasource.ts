@@ -78,7 +78,7 @@ export async function getCategoryArticles(locale: string, category: string) {
   return articles.sort((a, b) => a.meta.order - b.meta.order);
 }
 
-export function getCategoriesList() {
+export function getCategoriesList(locale?: string) {
   const categories = [];
 
   fs.readdirSync(articlesDirectory).forEach((locale) => {
@@ -86,6 +86,10 @@ export function getCategoriesList() {
       categories.push({ locale, category });
     });
   });
+
+  if (locale) {
+    return categories.filter((category) => category.locale === locale);
+  }
 
   return categories;
 }
