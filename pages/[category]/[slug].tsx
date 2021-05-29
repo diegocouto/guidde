@@ -1,9 +1,13 @@
 import { GetStaticPropsContext } from 'next';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
+import styled from 'styled-components';
 
 import Screen from '../../components/containers/Screen';
+import ScreenContent from '../../components/containers/ScreenContent';
+import ScreenContentHeader from '../../components/containers/ScreenContentHeader';
 import Breadcrumbs from '../../components/navigation/Breadcrumbs';
+import ScreenTitle from '../../components/typography/ScreenTitle';
 import { ArticlesListItemType, ArticleType, getArticle, getArticlesList } from '../../utils/datasource';
 
 interface ContextParams extends GetStaticPropsContext {
@@ -24,13 +28,19 @@ export default function ArticlePage({ article, category, locale }: Props) {
 
   return (
     <Screen title={article.meta.title} isCompact>
-      <Breadcrumbs items={[{ label: categoryTitle, href: categoryPath }]} locale={locale} />
+      <ScreenContent>
+        <ScreenContentHeader>
+          <Breadcrumbs items={[{ label: categoryTitle, href: categoryPath }]} locale={locale} />
+          <ScreenTitle>{article.meta.title}</ScreenTitle>
+        </ScreenContentHeader>
 
-      <h1>{article.meta.title}</h1>
-      <article dangerouslySetInnerHTML={{ __html: article.content }} />
+        <ArticleContent dangerouslySetInnerHTML={{ __html: article.content }} />
+      </ScreenContent>
     </Screen>
   );
 }
+
+const ArticleContent = styled.article.attrs({ className: 'article-content' })``;
 
 export async function getStaticProps({ params, locale }: ContextParams) {
   const article = await getArticle(locale, params.category, params.slug);

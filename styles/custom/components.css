@@ -5,3 +5,98 @@
 .btn-default {
   @apply bg-gray-100 ring-gray-300 hover:bg-gray-200;
 }
+
+.article-content {
+  @apply leading-relaxed max-w-2xl;
+}
+
+.article-content h1,
+.article-content h3,
+.article-content h5 {
+  @apply font-semibold;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+  @apply mt-8 mb-4;
+}
+
+.article-content h2 {
+  @apply text-2xl leading-loose;
+}
+
+.article-content h3 {
+  @apply text-xl leading-relaxed;
+}
+
+.article-content h4 {
+  @apply text-lg;
+}
+
+.article-content h5 {
+  @apply text-lg;
+}
+
+.article-content p {
+  @apply mb-4;
+}
+
+.article-content b,
+.article-content strong {
+  @apply font-bold;
+}
+
+.article-content a {
+  @apply font-semibold text-primary-500 hover:underline;
+}
+
+.article-content ol {
+  counter-reset: item;
+}
+
+.article-content ul,
+.article-content ol {
+  @apply pl-12 mb-6;
+}
+
+.article-content li {
+  @apply relative mb-4;
+}
+
+.article-content ul > li::before {
+  @apply bg-primary-500 rounded-full absolute -left-6 w-2 h-2;
+  content: ' ';
+  top: 0.6rem;
+}
+
+.article-content ol > li::before {
+  @apply bg-primary-500 text-white text-sm font-bold rounded-full text-center absolute -left-8;
+
+  content: counter(item);
+  counter-increment: item;
+  top: 0.2rem;
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.article-content img,
+.article-content video,
+.article-content iframe {
+  @apply mb-4 max-w-full;
+}
+
+.article-content blockquote {
+  @apply border-l-4 pl-4 my-6;
+}
+
+.article-content pre {
+  @apply bg-gray-100 rounded-lg p-6 mt-2 mb-4;
+}
+
+.article-content :not(pre) > code {
+  @apply bg-gray-100 rounded-lg font-mono font-medium text-sm px-4 py-6;
+}

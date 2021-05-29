@@ -8,6 +8,8 @@ import ScreenContent from '../../components/containers/ScreenContent';
 import ScreenContentHeader from '../../components/containers/ScreenContentHeader';
 import ArticlesList from '../../components/lists/ArticlesList';
 import Breadcrumbs from '../../components/navigation/Breadcrumbs';
+import ScreenDescription from '../../components/typography/ScreenDescription';
+import ScreenTitle from '../../components/typography/ScreenTitle';
 import {
   CategoryArticleType,
   CategoryListItemType,
@@ -38,8 +40,8 @@ export default function CategoryPage({ articles, category, locale }: Props) {
           <Breadcrumbs locale={locale} />
 
           <CategoryDescripionContainer>
-            <CategoryTitle>{categoryTitle}</CategoryTitle>
-            <CategoryDescription>{categoryDescripton}</CategoryDescription>
+            <ScreenTitle>{categoryTitle}</ScreenTitle>
+            <ScreenDescription>{categoryDescripton}</ScreenDescription>
           </CategoryDescripionContainer>
         </ScreenContentHeader>
 
@@ -51,14 +53,6 @@ export default function CategoryPage({ articles, category, locale }: Props) {
 
 const CategoryDescripionContainer = styled.div.attrs({
   className: 'space-y-1',
-})``;
-
-const CategoryTitle = styled.h1.attrs({
-  className: 'font-semibold text-3xl',
-})``;
-
-const CategoryDescription = styled.p.attrs({
-  className: 'text-gray-500 text-lg',
 })``;
 
 export async function getStaticProps({ params, locale }: ContextParams) {

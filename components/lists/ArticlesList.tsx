@@ -16,7 +16,7 @@ export default function ArticlesList({ articles, locale }: Props) {
         <ListItem
           key={article.slug}
           title={article.meta.title}
-          description={article.meta.title}
+          description={article.meta.description}
           path={article.url}
           locale={locale}
         />
