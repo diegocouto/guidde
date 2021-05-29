@@ -75,7 +75,7 @@ export async function getCategoryArticles(locale: string, category: string) {
     })
   );
 
-  return articles;
+  return articles.sort((a, b) => a.meta.order - b.meta.order);
 }
 
 export function getCategoriesList() {
