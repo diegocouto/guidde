@@ -27,7 +27,7 @@ export default function Screen({ children, ...props }: React.PropsWithChildren<P
 
       <AppWrapper>
         <AppHeader isCompact={props.isCompact} />
-        <ScreenContent>{children}</ScreenContent>
+        <AppContentWrapper>{children}</AppContentWrapper>
         <AppFooter />
       </AppWrapper>
     </>
@@ -38,6 +38,6 @@ const AppWrapper = styled.div.attrs({
   className: 'flex flex-col h-full',
 })``;
 
-const ScreenContent = styled.div.attrs({
+const AppContentWrapper = styled.div.attrs({
   className: 'container flex-1',
 })``;

@@ -1,14 +1,18 @@
 import { GetStaticPropsContext } from 'next';
+import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
+import styled from 'styled-components';
 
 import Screen from '../../components/containers/Screen';
+import ScreenContent from '../../components/containers/ScreenContent';
+import ScreenContentHeader from '../../components/containers/ScreenContentHeader';
+import ArticlesList from '../../components/lists/ArticlesList';
+import Breadcrumbs from '../../components/navigation/Breadcrumbs';
 import {
   CategoryArticleType,
   CategoryListItemType,
-  CategoryType,
   getCategoriesList,
   getCategoryArticles,
-  getCategoryDetails,
 } from '../../utils/datasource';
 
 interface ContextParams extends GetStaticPropsContext {
@@ -16,37 +20,53 @@ interface ContextParams extends GetStaticPropsContext {
 }
 
 interface Props {
-  category: CategoryType;
   articles: CategoryArticleType[];
+  category: string;
+  locale: string;
 }
 
-export default function CategoryPage({ category, articles }: Props) {
+export default function CategoryPage({ articles, category, locale }: Props) {
+  const { t } = useTranslation('categories');
+
+  const categoryTitle = t(`${category}.title`);
+  const categoryDescripton = t(`${category}.description`);
+
   return (
-    <Screen title={category.name} isCompact>
-      <h1>{category.name}</h1>
-      <p>{category.description}</p>
+    <Screen title={categoryTitle} isCompact>
+      <ScreenContent>
+        <ScreenContentHeader>
+          <Breadcrumbs locale={locale} />
 
-      <ul>
-        {articles.map((article) => (
-          <li key={article.slug}>
-            <p>
-              <a href={article.url}>{article.meta.title}</a>
-            </p>
+          <CategoryDescripionContainer>
+            <CategoryTitle>{categoryTitle}</CategoryTitle>
+            <CategoryDescription>{categoryDescripton}</CategoryDescription>
+          </CategoryDescripionContainer>
+        </ScreenContentHeader>
 
-            <p>{article.meta.description}</p>
-          </li>
-        ))}
-      </ul>
+        <ArticlesList articles={articles} locale={locale} />
+      </ScreenContent>
     </Screen>
   );
 }
 
+const CategoryDescripionContainer = styled.div.attrs({
+  className: 'space-y-1',
+})``;
+
+const CategoryTitle = styled.h1.attrs({
+  className: 'font-semibold text-3xl',
+})``;
+
+const CategoryDescription = styled.p.attrs({
+  className: 'text-gray-500 text-lg',
+})``;
+
 export async function getStaticProps({ params, locale }: ContextParams) {
   const articles = await getCategoryArticles(locale, params.category);
-  const category = getCategoryDetails(locale, params.category);
+  const category = params.category;
 
   return {
-    props: { category, articles },
+    props: { articles, category, locale },
   };
 }
 

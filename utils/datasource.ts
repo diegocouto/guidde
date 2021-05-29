@@ -2,7 +2,6 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
-import { CATEGORIES } from './constants/categories';
 import { markdownToHtml } from './markdown';
 
 export type ArticleType = {
@@ -17,27 +16,22 @@ export type ArticleType = {
 };
 
 export type ArticlesListItemType = {
-  lang: string;
+  locale: string;
   category: string;
   slug: string;
-};
-
-export type CategoryType = {
-  name: string;
-  description: string;
 };
 
 export type CategoryArticleType = Omit<ArticleType, 'content'>;
 
 export type CategoryListItemType = {
-  lang: string;
+  locale: string;
   category: string;
 };
 
 const articlesDirectory = path.join(process.cwd(), 'articles');
 
-export async function getArticle(lang: string, category: string, slug: string, parseContent = true) {
-  const articlePath = getFullArticlePath(lang, category, slug);
+export async function getArticle(locale: string, category: string, slug: string, parseContent = true) {
+  const articlePath = getFullArticlePath(locale, category, slug);
   const fileContents = fs.readFileSync(articlePath, 'utf8');
 
   const article = matter(fileContents);
@@ -45,7 +39,7 @@ export async function getArticle(lang: string, category: string, slug: string, p
 
   return {
     slug,
-    url: path.join('/', lang, category, slug),
+    url: path.join('/', category, slug),
     meta: article.data,
     ...(content ? { content } : {}),
   };
@@ -55,10 +49,10 @@ export function getArticlesList() {
   const categories = getCategoriesList();
   const articles = [];
 
-  categories.forEach(({ lang, category }) => {
-    fs.readdirSync(path.join(articlesDirectory, lang, category)).forEach((article) => {
+  categories.forEach(({ locale, category }) => {
+    fs.readdirSync(path.join(articlesDirectory, locale, category)).forEach((article) => {
       articles.push({
-        lang,
+        locale,
         category,
         slug: parseArticleFilename(article),
       });
@@ -68,14 +62,14 @@ export function getArticlesList() {
   return articles;
 }
 
-export async function getCategoryArticles(lang: string, category: string) {
-  const categoryPath = path.join(articlesDirectory, lang, category);
+export async function getCategoryArticles(locale: string, category: string) {
+  const categoryPath = path.join(articlesDirectory, locale, category);
   const articleFilenames = fs.readdirSync(categoryPath);
 
   const articles = await Promise.all(
     articleFilenames.map(async (filename) => {
       const slug = parseArticleFilename(filename);
-      const article = await getArticle(lang, category, slug, false);
+      const article = await getArticle(locale, category, slug, false);
 
       return article;
     })
@@ -84,24 +78,20 @@ export async function getCategoryArticles(lang: string, category: string) {
   return articles;
 }
 
-export function getCategoryDetails(lang: string, category: string) {
-  return CATEGORIES[lang][category];
-}
-
 export function getCategoriesList() {
   const categories = [];
 
-  fs.readdirSync(articlesDirectory).forEach((lang) => {
-    fs.readdirSync(path.join(articlesDirectory, lang)).forEach((category) => {
-      categories.push({ lang, category });
+  fs.readdirSync(articlesDirectory).forEach((locale) => {
+    fs.readdirSync(path.join(articlesDirectory, locale)).forEach((category) => {
+      categories.push({ locale, category });
     });
   });
 
   return categories;
 }
 
-function getFullArticlePath(lang: string, category: string, slug: string) {
-  return path.join(articlesDirectory, lang, category, `${slug}.md`);
+function getFullArticlePath(locale: string, category: string, slug: string) {
+  return path.join(articlesDirectory, locale, category, `${slug}.md`);
 }
 
 function parseArticleFilename(filename: string) {
