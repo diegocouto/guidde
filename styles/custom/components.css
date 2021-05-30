@@ -7,7 +7,7 @@
 }
 
 .article-content {
-  @apply leading-relaxed max-w-2xl;
+  @apply leading-relaxed;
 }
 
 .article-content h1,
