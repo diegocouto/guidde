@@ -5,5 +5,8 @@
     "backTo": "Voltar para {{ brand }}",
     "contactUs": "Entre em contato",
     "title": "Como podemos ajudar?"
+  },
+  "sections": {
+    "relatedArticles": "Artigos relacionados"
   }
 }

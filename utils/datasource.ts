@@ -2,6 +2,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
+import { suffle } from './helpers';
 import { markdownToHtml } from './markdown';
 
 export type ArticleType = {
@@ -47,7 +48,7 @@ export async function getArticle(locale: string, category: string, slug: string,
 
 export function getArticlesList() {
   const categories = getCategoriesList();
-  const articles = [];
+  const articles: ArticlesListItemType[] = [];
 
   categories.forEach(({ locale, category }) => {
     fs.readdirSync(path.join(articlesDirectory, locale, category)).forEach((article) => {
@@ -60,6 +61,14 @@ export function getArticlesList() {
   });
 
   return articles;
+}
+
+export async function getRelatedArticlesList(locale: string, category: string, currentArticle: string) {
+  const articles = await getCategoryArticles(locale, category);
+
+  return suffle(articles)
+    .slice(0, 4)
+    .filter((article) => article.slug !== currentArticle);
 }
 
 export async function getCategoryArticles(locale: string, category: string) {
