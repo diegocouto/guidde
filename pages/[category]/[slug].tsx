@@ -47,7 +47,7 @@ export default function ArticlePage({ article, relatedArticles, category, locale
         <ArticleContainer>
           <ArticleContent dangerouslySetInnerHTML={{ __html: article.content }} />
 
-          {relatedArticles.length && (
+          {!!relatedArticles.length && (
             <RelatedArticlesSection>
               <RelatedArticlesTitle>{t('sections.relatedArticles')}</RelatedArticlesTitle>
               <ArticlesList articles={relatedArticles} locale={locale} />
