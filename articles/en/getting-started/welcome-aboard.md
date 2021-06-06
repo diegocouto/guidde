@@ -1,6 +1,7 @@
 ---
 title: 'Welcome aboard 👋'
 description: 'We want to help you provide great customer support to all of your customers in a sane and sustainable way.'
+tags: 'getting started, intro, presentation'
 order: 1
 updatedAt: '2021-04-29'
 ---
