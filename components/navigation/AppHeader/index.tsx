@@ -3,7 +3,8 @@ import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
-import { Brand } from '../../utils/constants/app';
+import { Brand } from '../../../utils/constants/app';
+import SearchInput from './SearchInput';
 
 interface Props {
   isCompact?: boolean;
@@ -28,11 +29,10 @@ export default function AppHeader({ isCompact }: Props) {
           </NavigationActions>
         </NavigationBar>
 
-        {!isCompact && (
-          <SearchBar>
-            <Title>{t('header.title')}</Title>
-          </SearchBar>
-        )}
+        <SearchBar>
+          {!isCompact && <Title>{t('header.title')}</Title>}
+          <SearchInput />
+        </SearchBar>
       </Container>
     </Wrapper>
   );

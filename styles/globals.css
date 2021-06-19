@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'custom/buttons.css';
 @import 'custom/components.css';
+@import 'custom/inputs.css';
 
 @layer base {
   html,
