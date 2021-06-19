@@ -1,0 +1,7 @@
+.focusable {
+  @apply ring-primary-500 ring-inset focus:bg-white focus:ring-1 focus:outline-none;
+}
+
+.form-input {
+  @apply transition text-gray-800 border border-gray-200 rounded-lg py-3 pl-4 pr-10 w-full focus:border-primary-500;
+}

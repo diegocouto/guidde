@@ -1,6 +1,7 @@
 ---
 title: 'Seja bem-vindo 👋'
 description: 'Queremos ajudá-lo a fornecer um ótimo suporte para todos os seus clientes de uma forma simples e sustentável.'
+tags: 'primeiros passos, introdução, apresentação'
 order: 1
 updatedAt: '2021-04-29'
 ---

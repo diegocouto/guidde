@@ -12,7 +12,7 @@ interface Props {
 export default function ListItem({ title, description, path, locale }: Props) {
   return (
     <Item key={path}>
-      <Link href={path} locale={locale}>
+      <Link href={path} locale={locale} passHref={true}>
         <ItemLink>
           <ItemLabel>{title}</ItemLabel>
           <ItemDescription>{description}</ItemDescription>
@@ -23,11 +23,6 @@ export default function ListItem({ title, description, path, locale }: Props) {
 }
 
 const Item = styled.li``;
-
-const ItemLink = styled.a.attrs({
-  className:
-    'flex flex-col cursor-pointer border border-gray-50 bg-gray-50 rounded-xl p-6 space-y-1 hover:bg-white hover:border-gray-200',
-})``;
-
+const ItemLink = styled.a.attrs({ className: 'list-item focusable' })``;
 const ItemLabel = styled.p.attrs({ className: 'font-medium text-lg text-primary-500' })``;
 const ItemDescription = styled.p.attrs({ className: 'text-gray-500' })``;

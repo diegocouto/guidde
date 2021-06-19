@@ -29,6 +29,17 @@ export type CategoryListItemType = {
   category: string;
 };
 
+export type SearchResultType = {
+  item: {
+    category: string;
+    description?: string;
+    locale: string;
+    slug: string;
+    tags: string;
+    title: string;
+  };
+};
+
 const articlesDirectory = path.join(process.cwd(), 'articles');
 
 export async function getArticle(locale: string, category: string, slug: string, parseContent = true) {

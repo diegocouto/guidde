@@ -14,10 +14,6 @@ export default function CategoriesList({ categories, locale }: Props) {
   const { t } = useTranslation('categories');
 
   const sortedCategories = categories.sort((a, b) => {
-    console.log(t(`${a.category}.title`));
-    console.log(t(`${a.category}.order`));
-    console.log(t(`${b.category}.order`));
-
     return Number(t(`${a.category}.order`)) - Number(t(`${b.category}.order`));
   });
 
@@ -28,7 +24,7 @@ export default function CategoriesList({ categories, locale }: Props) {
           key={category}
           title={t(`${category}.title`)}
           description={t(`${category}.description`)}
-          path={category}
+          path={`/${category}`}
           locale={locale}
         />
       ))}
