@@ -8,5 +8,14 @@
   },
   "sections": {
     "relatedArticles": "Artigos relacionados"
+  },
+  "actions": {
+    "backToHome": "Voltar ao Início"
+  },
+  "errors": {
+    "notFound": {
+      "title": "Não encontrado",
+      "description": "Desculpe, não conseguimos encontrar o conteúdo que você procura. Vamos tentar novamente?"
+    }
   }
 }

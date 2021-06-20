@@ -1,5 +1,5 @@
 {
-  "pageTitle": "{{ brand }} Help Center",
+  "pageTitle": "{{ brand }}'s Help Center",
   "homePageTitle": "Help Center",
   "header": {
     "backTo": "Back to {{ brand }}",
@@ -8,5 +8,14 @@
   },
   "sections": {
     "relatedArticles": "Related articles"
+  },
+  "actions": {
+    "backToHome": "Back to Home"
+  },
+  "errors": {
+    "notFound": {
+      "title": "Not found",
+      "description": "Sorry, we couldn't find the content you're looking for. Let's try again?"
+    }
   }
 }
