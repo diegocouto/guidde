@@ -5,3 +5,7 @@
 .btn-default {
   @apply bg-gray-100 ring-gray-300 hover:bg-gray-200;
 }
+
+.btn-primary {
+  @apply text-white bg-primary-500 ring-primary-300 hover:bg-primary-600;
+}
