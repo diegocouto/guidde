@@ -10,6 +10,7 @@ import AppHeader from '../navigation/AppHeader';
 interface Props {
   title?: string;
   isCompact?: boolean;
+  isMinimal?: boolean;
 }
 
 export default function Screen({ children, ...props }: React.PropsWithChildren<Props>) {
@@ -26,7 +27,7 @@ export default function Screen({ children, ...props }: React.PropsWithChildren<P
       </Head>
 
       <AppWrapper>
-        <AppHeader isCompact={props.isCompact} />
+        <AppHeader isCompact={props.isCompact} isMinimal={props.isMinimal} />
         <AppContentWrapper>{children}</AppContentWrapper>
         <AppFooter />
       </AppWrapper>
