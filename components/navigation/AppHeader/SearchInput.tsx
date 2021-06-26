@@ -96,7 +96,7 @@ const InputIconContainer = styled.div.attrs({
 
 const Input = styled.input.attrs({
   placeholder: 'Search',
-  className: 'form-input focusable',
+  className: 'form-input focusable pr-10',
 })``;
 
 const LoaderIcon = styled(RiLoader5Line).attrs({ size: 24, className: 'animate-spin' })``;

@@ -39,7 +39,7 @@ const ErrorDetailsContainer = styled.div.attrs({
 
 const ErrorIcon = styled(RiCompass4Line).attrs({
   className: 'text-gray-300',
-  size: 36,
+  size: 48,
 })``;
 
 const ErrorTitle = styled.h2.attrs({

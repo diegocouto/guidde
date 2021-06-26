@@ -6,11 +6,29 @@
     "contactUs": "Entre em contato",
     "title": "Como podemos ajudar?"
   },
+  "cards": {
+    "messageSent": {
+      "title": "Obrigado!",
+      "description": "Sua mensagem foi enviada. Vamos entrar em contato com você o mais breve possível."
+    }
+  },
   "sections": {
-    "relatedArticles": "Artigos relacionados"
+    "relatedArticles": "Artigos relacionados",
+    "contactUs": {
+      "title": "Fale conosco",
+      "description": "Algum dúvida ou sugestão? Envie uma mensagem pra nós!"
+    }
+  },
+  "inputs": {
+    "email": "Email",
+    "message": "Mensagem",
+    "optional": "(opcional)",
+    "subject": "Assunto"
   },
   "actions": {
-    "backToHome": "Voltar ao Início"
+    "back": "Voltar",
+    "backToHome": "Voltar ao início",
+    "sendMessage": "Enviar mensagem"
   },
   "errors": {
     "notFound": {

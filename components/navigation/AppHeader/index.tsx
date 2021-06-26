@@ -8,9 +8,10 @@ import SearchInput from './SearchInput';
 
 interface Props {
   isCompact?: boolean;
+  isMinimal?: boolean;
 }
 
-export default function AppHeader({ isCompact }: Props) {
+export default function AppHeader({ isCompact, isMinimal }: Props) {
   const { t } = useTranslation('common');
 
   return (
@@ -24,15 +25,22 @@ export default function AppHeader({ isCompact }: Props) {
           </Link>
 
           <NavigationActions>
-            <ExternalLink href="#">{t('header.backTo', { brand: Brand.name })}</ExternalLink>
-            <ContactButton>{t('header.contactUs')}</ContactButton>
+            <ExternalLink href={Brand.website}>{t('header.backTo', { brand: Brand.name })}</ExternalLink>
+
+            {!isMinimal && (
+              <Link href="/contact-us" passHref>
+                <ContactUsLink>{t('header.contactUs')}</ContactUsLink>
+              </Link>
+            )}
           </NavigationActions>
         </NavigationBar>
 
-        <SearchBar>
-          {!isCompact && <Title>{t('header.title')}</Title>}
-          <SearchInput />
-        </SearchBar>
+        {!isMinimal && (
+          <SearchBar>
+            {!isCompact && <Title>{t('header.title')}</Title>}
+            <SearchInput />
+          </SearchBar>
+        )}
       </Container>
     </Wrapper>
   );
@@ -68,7 +76,7 @@ const ExternalLink = styled.a.attrs({
   className: 'text-gray-500 hidden sm:inline-block hover:text-gray-600',
 })``;
 
-const ContactButton = styled.button.attrs({
+const ContactUsLink = styled.a.attrs({
   className: 'btn btn-default',
   type: 'button',
 })``;

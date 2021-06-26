@@ -6,11 +6,29 @@
     "contactUs": "Contact us",
     "title": "How can we help?"
   },
+  "cards": {
+    "messageSent": {
+      "title": "Thank you!",
+      "description": "Your message has been sent. We'll get back to you as soon as possible."
+    }
+  },
   "sections": {
-    "relatedArticles": "Related articles"
+    "relatedArticles": "Related articles",
+    "contactUs": {
+      "title": "Contact us",
+      "description": "Any questions or suggestions? Just write us a message!"
+    }
+  },
+  "inputs": {
+    "email": "Email",
+    "message": "Message",
+    "optional": "(optional)",
+    "subject": "Subject"
   },
   "actions": {
-    "backToHome": "Back to Home"
+    "back": "Back",
+    "backToHome": "Back to home",
+    "sendMessage": "Send message"
   },
   "errors": {
     "notFound": {
