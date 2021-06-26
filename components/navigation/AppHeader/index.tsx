@@ -78,7 +78,6 @@ const ExternalLink = styled.a.attrs({
 
 const ContactUsLink = styled.a.attrs({
   className: 'btn btn-default',
-  type: 'button',
 })``;
 
 const Title = styled.h1.attrs({
