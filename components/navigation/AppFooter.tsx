@@ -28,7 +28,7 @@ const Container = styled.div.attrs({
 const Logo = styled.img.attrs({
   alt: Brand.name,
   src: '/logo.svg',
-  className: 'filter grayscale opacity-25 h-6',
+  className: 'grayscale opacity-25 h-6',
 })``;
 
 const SocialLinksList = styled.ul.attrs({ className: 'text-sm space-x-4' })``;

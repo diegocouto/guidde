@@ -13,7 +13,7 @@
 }
 
 .search-result-item button {
-  @apply group flex flex-col text-left bg-white cursor-pointer p-4 w-full hover:bg-primary-500 hover:text-white;
+  @apply flex flex-col text-left bg-white cursor-pointer p-4 w-full hover:bg-primary-500 hover:text-white;
 }
 
 .search-result-item .search-result-description {

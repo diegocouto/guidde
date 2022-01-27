@@ -52,7 +52,7 @@ function SearchResultsItem({ item, isActive, onSelect }: ItemProps) {
 const ItemsList = styled.ul.attrs({ className: 'search-result-list' })``;
 
 const Item = styled.li``;
-const ItemButton = styled.button``;
+const ItemButton = styled.button.attrs({ className: 'group' })``;
 
 const ItemCategory = styled.span.attrs({ className: 'search-result-description' })``;
 const ItemLabel = styled.span.attrs({ className: 'search-result-title' })``;
