@@ -3,7 +3,7 @@ import path from 'path';
 
 import { getArticle, getArticlesList } from '../datasource';
 
-const CACHE_PATH = 'public';
+const CACHE_PATH = 'cache';
 const CACHE_FILE = 'data.json';
 
 export interface CacheEntry {
@@ -35,7 +35,7 @@ export function updateArticlesCache() {
 }
 
 export function getArticlesCache(): CacheEntry[] {
-  const rawData = fs.readFileSync(path.join(CACHE_PATH, CACHE_FILE));
+  const rawData = fs.readFileSync(path.join(CACHE_PATH, CACHE_FILE), 'utf8');
 
   if (!rawData) {
     return [];
