@@ -11,8 +11,4 @@
   body {
     @apply text-gray-900 h-full;
   }
-
-  #__next {
-    @apply h-full;
-  }
 }

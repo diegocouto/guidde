@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { RiArrowLeftLine } from 'react-icons/ri';
@@ -20,6 +21,7 @@ interface Props {
 export default function ContactForm(props: Props) {
   const { register, handleSubmit, formState } = useForm({ mode: 'onChange', resolver: yupResolver(schema) });
   const { t } = useTranslation('common');
+  const { back } = useRouter();
 
   function onSubmit(data: FormData) {
     props.onSubmit?.(data);
@@ -38,7 +40,7 @@ export default function ContactForm(props: Props) {
       <FormActionsContainer>
         <SubmitButton value={t('actions.sendMessage')} disabled={!formState.isValid || props.isLoading} />
 
-        <BackButton>
+        <BackButton onClick={back}>
           <BackIcon /> {t('actions.back')}
         </BackButton>
       </FormActionsContainer>
