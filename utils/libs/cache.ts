@@ -35,7 +35,7 @@ export function updateArticlesCache() {
 }
 
 export function getArticlesCache(): CacheEntry[] {
-  const rawData = fs.readFileSync(path.join(CACHE_PATH, CACHE_FILE), 'utf8');
+  const rawData = fs.readFileSync(path.join(__dirname, CACHE_PATH, CACHE_FILE), 'utf8');
 
   if (!rawData) {
     return [];
