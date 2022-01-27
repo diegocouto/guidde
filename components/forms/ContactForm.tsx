@@ -30,7 +30,7 @@ export default function ContactForm(props: Props) {
       <EmailInput placeholder={t('inputs.email')} {...register('email')} />
 
       <MessageInputContainer>
-        <MessageSubjectInput placeholder={`${t('inputs.subject')} ${t('inputs.optional')}}`} {...register('subject')} />
+        <MessageSubjectInput placeholder={`${t('inputs.subject')} ${t('inputs.optional')}`} {...register('subject')} />
 
         <MessageContentInput placeholder={t('inputs.message')} {...register('message')}></MessageContentInput>
       </MessageInputContainer>
