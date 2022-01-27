@@ -1,7 +1,3 @@
-#__next {
-  @apply h-full;
-}
-
 .list-item {
   @apply transition flex flex-col cursor-pointer border border-gray-50 bg-gray-50 rounded-xl p-6 space-y-1 hover:bg-white hover:border-gray-200 focus:border-primary-500;
 }

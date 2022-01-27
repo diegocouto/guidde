@@ -2,7 +2,12 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
+  purge: {
+    content: ['./components/**/*.tsx', './pages/**/*.tsx'],
+    options: {
+      safelist: ['__next'],
+    },
+  },
   theme: {
     colors: {
       ...colors,
