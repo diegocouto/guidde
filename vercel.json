@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/hello.js": {
+    "api/search.ts": {
       "includeFiles": "public/data.json"
     }
   }
