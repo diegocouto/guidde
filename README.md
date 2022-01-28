@@ -24,23 +24,39 @@ Before you can start preparing to publish your new knowledge base, you might wan
 
 You probably noticed that a **Contact us** button is available on Guidde's main navigation bar. Although the form itself is ready to use, you'll have to implement your own logic to submit this content in a way that makes sense for your current workflow.
 
-In order to do so, update `api/messages.ts`, which should contain the following:
+In order to do so, update `api/messages.ts`. Here you can see an example of how it would look like when using SendGrid to send your messages:
 
 ```typescript
+import Mail from '@sendgrid/mail';
 import { NextApiRequest, NextApiResponse } from 'next';
+
+Mail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   if (req.body) {
     const { email, subject, message } = JSON.parse(req.body);
 
-    /**
-     *  --------------------------
-     *  TODO Integrate with your preferred email service
-     *  --------------------------
-     */
-  }
+    const msg = {
+      to: 'support@yourdomain.com',
+      from: 'support@yourdomain.com',
+      replyTo: email,
+      subject: subject,
+      text: message,
+    };
 
-  res.json({ success: true });
+    if (process.env.SENDGRID_API_KEY) {
+      return Mail.send(msg)
+        .then(() => {
+          res.json({ success: true });
+        })
+        .catch((error) => {
+          console.error(error);
+          res.json({ success: false });
+        });
+    }
+
+    res.json({ success: false });
+  }
 };
 ```
 
