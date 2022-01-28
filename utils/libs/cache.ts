@@ -3,7 +3,7 @@ import path from 'path';
 
 import { getArticle, getArticlesList } from '../datasource';
 
-const CACHE_PATH = '_cache';
+const CACHE_PATH = 'public';
 const CACHE_FILE = 'data.json';
 
 export interface CacheEntry {
