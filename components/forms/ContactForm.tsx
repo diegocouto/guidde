@@ -38,7 +38,7 @@ export default function ContactForm(props: Props) {
       </MessageInputContainer>
 
       <FormActionsContainer>
-        <SubmitButton value={t('actions.sendMessage')} disabled={!formState.isValid || props.isLoading} />
+        <SubmitButton disabled={!formState.isValid || props.isLoading}>{t('actions.sendMessage')}</SubmitButton>
 
         <BackButton onClick={back}>
           <BackIcon /> {t('actions.back')}
@@ -84,8 +84,8 @@ const BackIcon = styled(RiArrowLeftLine).attrs({
   className: 'mr-1',
 })``;
 
-const SubmitButton = styled.input.attrs({
-  className: 'btn btn-primary',
+const SubmitButton = styled.button.attrs({
+  className: 'btn btn-primary bg-primary-500',
   type: 'submit',
 })``;
 
