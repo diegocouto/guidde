@@ -9,6 +9,7 @@ const Search = (function () {
     const documents = loadDocuments();
 
     finder = new Fuse(documents, {
+      minMatchCharLength: 2,
       useExtendedSearch: true,
       keys: ['locale', 'tags', 'title', 'description'],
     });
@@ -24,14 +25,19 @@ const Search = (function () {
         hydrateFinder();
       }
 
-      return finder.search({
-        $and: [
-          { locale: `=${locale}` },
-          {
-            $or: [{ tags: term }, { title: term }, { description: term }],
-          },
-        ],
-      });
+      return finder.search(
+        {
+          $and: [
+            { locale: `=${locale}` },
+            {
+              $or: [{ tags: term }, { title: term }, { description: term }],
+            },
+          ],
+        },
+        {
+          limit: 5,
+        }
+      );
     },
   };
 })();
