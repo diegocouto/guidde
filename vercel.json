@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/search.ts": {
-      "includeFiles": "cache/**"
+      "includeFiles": "_files/data.json"
     }
   }
 }

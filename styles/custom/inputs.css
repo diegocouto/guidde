@@ -14,6 +14,7 @@
   @apply transition text-gray-800 border border-gray-200 rounded-lg py-3 px-4 w-full focus:border-primary-500;
 }
 
-input[disabled=''] {
+input[disabled=''],
+button[disabled=''] {
   @apply opacity-25;
 }

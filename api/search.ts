@@ -8,7 +8,9 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     res.json(Search.find(term, locale));
-  } catch {
+  } catch (error) {
+    console.error(error);
+
     res.json([]);
   }
 };
