@@ -3,7 +3,7 @@ import path from 'path';
 
 import { getArticle, getArticlesList } from '../datasource';
 
-const CACHE_PATH = 'public';
+const CACHE_PATH = '_files';
 const CACHE_FILE = 'data.json';
 
 export interface CacheEntry {
@@ -30,12 +30,12 @@ export function updateArticlesCache() {
       };
     })
   ).then((data) => {
-    fs.writeFileSync(path.join(__dirname, CACHE_PATH, CACHE_FILE), JSON.stringify(data));
+    fs.writeFileSync(path.join(CACHE_PATH, CACHE_FILE), JSON.stringify(data));
   });
 }
 
 export function getArticlesCache(): CacheEntry[] {
-  const rawData = fs.readFileSync(path.join(__dirname, CACHE_PATH, CACHE_FILE), 'utf8');
+  const rawData = fs.readFileSync(path.join(CACHE_PATH, CACHE_FILE), 'utf8');
 
   if (!rawData) {
     return [];
