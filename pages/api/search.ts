@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import Search from '../utils/libs/search';
+import Search from '../../utils/libs/search';
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   const term = req.query.term as string;
