@@ -30,7 +30,7 @@ export function updateArticlesCache() {
       };
     })
   ).then((data) => {
-    fs.writeFileSync(path.join(CACHE_PATH, CACHE_FILE), JSON.stringify(data));
+    fs.writeFileSync(path.join(__dirname, CACHE_PATH, CACHE_FILE), JSON.stringify(data));
   });
 }
 
