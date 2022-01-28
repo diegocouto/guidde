@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import React, { useRef, useState } from 'react';
 import { useEffect } from 'react';
@@ -13,6 +14,8 @@ export default function SearchInput() {
   const [isSearching, setIsSearching] = useState(false);
   const [cursor, setCursor] = useState(0);
   const [term, setTerm] = useState('');
+
+  const { t } = useTranslation('common');
 
   const inputRef = useRef<HTMLInputElement>();
   const router = useRouter();
@@ -71,6 +74,7 @@ export default function SearchInput() {
       <InputContainer>
         <Input
           ref={inputRef}
+          placeholder={t('actions.search') + '...'}
           onChange={({ target }) => setTerm(target.value)}
           onFocus={() => setIsSearching(true)}
           onKeyUp={handleKeyUp}
@@ -95,7 +99,6 @@ const InputIconContainer = styled.div.attrs({
 })``;
 
 const Input = styled.input.attrs({
-  placeholder: 'Search',
   className: 'form-input focusable pr-10',
 })``;
 

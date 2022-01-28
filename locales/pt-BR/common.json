@@ -28,6 +28,7 @@
   "actions": {
     "back": "Voltar",
     "backToHome": "Voltar ao início",
+    "search": "Buscar",
     "sendMessage": "Enviar mensagem"
   },
   "errors": {

@@ -28,6 +28,7 @@
   "actions": {
     "back": "Back",
     "backToHome": "Back to home",
+    "search": "Search",
     "sendMessage": "Send message"
   },
   "errors": {
