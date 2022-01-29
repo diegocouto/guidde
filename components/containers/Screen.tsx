@@ -51,6 +51,10 @@ export default function Screen({ children, description, ...props }: React.PropsW
         )}
 
         <link rel="icon" href="/favicon.ico" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600&display=optional"
+          rel="stylesheet"
+        />
       </Head>
 
       <AppWrapper>

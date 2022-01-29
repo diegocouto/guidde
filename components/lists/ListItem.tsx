@@ -24,5 +24,5 @@ export default function ListItem({ title, description, path, locale }: Props) {
 
 const Item = styled.li``;
 const ItemLink = styled.a.attrs({ className: 'list-item focusable' })``;
-const ItemLabel = styled.p.attrs({ className: 'font-medium text-lg text-primary-500' })``;
+const ItemLabel = styled.p.attrs({ className: 'font-semibold text-lg text-primary-500' })``;
 const ItemDescription = styled.p.attrs({ className: 'text-gray-500' })``;

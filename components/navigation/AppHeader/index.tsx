@@ -65,7 +65,7 @@ const LogoLink = styled.a``;
 const Logo = styled.img.attrs({
   alt: Brand.name,
   src: '/logo.svg',
-  className: 'h-8',
+  className: 'h-7',
 })``;
 
 const NavigationActions = styled.div.attrs({
@@ -81,5 +81,5 @@ const ContactUsLink = styled.a.attrs({
 })``;
 
 const Title = styled.h1.attrs({
-  className: 'font-semibold text-3xl text-center pt-4 pb-2',
+  className: 'font-semibold text-3xl text-center pt-16 pb-2',
 })``;

@@ -1,4 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
+const { fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   mode: 'jit',
@@ -7,6 +8,10 @@ module.exports = {
     container: {
       center: true,
       padding: '1rem',
+    },
+    fontFamily: {
+      ...fontFamily,
+      sans: ['Assistant', ...fontFamily.sans],
     },
     extend: {
       colors: {
