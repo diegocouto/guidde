@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
+import { useEmbeddingState } from '../../../hooks/useEmbeddingState';
 import { Brand } from '../../../utils/constants/app';
 import SearchInput from './SearchInput';
 
@@ -13,13 +14,14 @@ interface Props {
 
 export default function AppHeader({ isCompact, isMinimal }: Props) {
   const { t } = useTranslation('common');
+  const { isEmbedded } = useEmbeddingState();
 
   return (
     <Wrapper>
       <Container>
         <NavigationBar>
           <Link href="/" passHref>
-            <LogoLink>
+            <LogoLink hidden={isEmbedded}>
               <Logo />
             </LogoLink>
           </Link>
@@ -60,7 +62,9 @@ const NavigationBar = styled.div.attrs({
 
 const SearchBar = styled.div.attrs({ className: 'space-y-2' })``;
 
-const LogoLink = styled.a``;
+const LogoLink = styled.a.attrs<{ hidden?: boolean }>(({ hidden }) => ({
+  className: hidden ? 'invisible' : '',
+}))``;
 
 const Logo = styled.img.attrs({
   alt: Brand.name,
@@ -69,7 +73,7 @@ const Logo = styled.img.attrs({
 })``;
 
 const NavigationActions = styled.div.attrs({
-  className: 'flex items-center text-sm space-x-4',
+  className: 'flex items-center text-sm ml-auto space-x-4',
 })``;
 
 const ExternalLink = styled.a.attrs({

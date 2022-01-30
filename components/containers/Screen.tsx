@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
+import { useEmbeddingState } from '../../hooks/useEmbeddingState';
 import { Brand } from '../../utils/constants/app';
 import AppFooter from '../navigation/AppFooter';
 import AppHeader from '../navigation/AppHeader';
@@ -18,6 +19,7 @@ interface Props {
 export default function Screen({ children, description, ...props }: React.PropsWithChildren<Props>) {
   const { t } = useTranslation('common');
   const { asPath } = useRouter();
+  const { isEmbedded } = useEmbeddingState();
 
   const basePath = process.env.NEXT_PUBLIC_URL || '';
   const basePageTitle = t('pageTitle', { brand: Brand.name });
@@ -60,7 +62,7 @@ export default function Screen({ children, description, ...props }: React.PropsW
       <AppWrapper>
         <AppHeader isCompact={props.isCompact} isMinimal={props.isMinimal} />
         <AppContentWrapper>{children}</AppContentWrapper>
-        <AppFooter />
+        {!isEmbedded && <AppFooter />}
       </AppWrapper>
     </>
   );
