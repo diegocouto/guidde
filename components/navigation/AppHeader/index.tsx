@@ -58,7 +58,9 @@ const Container = styled.div.attrs({
 
 const NavigationBar = styled.div.attrs({
   className: 'flex items-center justify-between',
-})``;
+})`
+  min-height: 38px;
+`;
 
 const SearchBar = styled.div.attrs({ className: 'space-y-2' })``;
 
