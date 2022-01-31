@@ -1,8 +1,10 @@
-<img src="https://user-images.githubusercontent.com/1069623/151549854-55cc743d-cf89-4ce2-b781-452efbe1ff9d.svg" alt="Logo" height="42" />
+<img src="https://user-images.githubusercontent.com/1069623/151846636-f10b5ea4-b564-4685-b689-de5bea964732.svg" alt="Logo" height="42" />
 
 # Guidde
 
 A simple customer support tool for your projects built with Next.js. **[Check out a live demo](https://guidde.vercel.app/)**.
+
+<img src="https://user-images.githubusercontent.com/1069623/151846646-1cb6dbda-3d4f-4954-a353-194e90e108ed.png" alt="Demo" />
 
 ## Getting started
 
