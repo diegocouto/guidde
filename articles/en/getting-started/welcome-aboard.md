@@ -16,4 +16,4 @@ We work to make sure that:
 ## Ready to get started?
 
 1. Give it a try and **start writing your first articles**. Thinking about questions your customers ask frequently might help!
-2. Now that you have some content, [embed the widget into your website](//#);
+2. Now that you have some content, [embed the widget into your website](/en/getting-started/using-the-widget);

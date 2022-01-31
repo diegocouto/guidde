@@ -3,5 +3,10 @@
     "title": "Getting Started",
     "description": "All the basics to get you up and running with Guidde in your product.",
     "order": "1"
+  }, 
+  "faq": {
+    "title": "FAQ",
+    "description": "Perhaps frequently is a strong word, but we know at least one of them crossed your mind.",
+    "order": "2"
   }
 }
